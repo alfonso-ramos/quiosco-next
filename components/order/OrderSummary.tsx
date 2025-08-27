@@ -1,19 +1,33 @@
-"use client"
+"use client";
 
-import { useStore } from "@/src/store"
+import { useStore } from "@/src/store";
+import ProductDetails from "./ProductDetails";
+import { useMemo } from "react";
+import { formatCurrency } from "@/src/utils";
 
 export default function OrderSummary() {
-  const order = useStore((state) => state.order)
+  const order = useStore((state) => state.order);
+
+  const total = useMemo(() => order.reduce((total, item) => total + (item.price * item.quantity), 0), [order]);
 
   return (
     <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
-        <h1 className="text-4xl text-center font-black">Mi pedido</h1>
+      <h1 className="text-4xl text-center font-black">Mi pedido</h1>
 
-        {order.length === 0 ? <p className="text-center my-10">El carrito esta vacio</p> : (
-          <div className="mt-5">
-            <p>Si hay algo</p>
-          </div>
-        )}
+      {order.length === 0 ? (
+        <p className="text-center my-10">El carrito esta vacio</p>
+      ) : (
+        <div className="mt-5">
+          {order.map((product) => (
+            <ProductDetails key={product.id} product={product} />
+          ))}
+
+          <p className="text-2xl mt-20 text-center">
+            Total a pagar: {''}
+            <span className="font-bold">{formatCurrency(total)}</span>
+          </p>
+        </div>
+      )}
     </aside>
-  )
+  );
 }
