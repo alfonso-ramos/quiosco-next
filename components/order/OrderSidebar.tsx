@@ -1,3 +1,4 @@
+// Evitar varias importaciones globales
 import { prisma } from '@/src/lib/prisma'
 import CategoryIcon from '../UI/CategoryIcon'
 

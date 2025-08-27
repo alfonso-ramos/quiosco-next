@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quiosco Next.js
 
-## Getting Started
+Sistema de gestión de quiosco desarrollado con Next.js, TypeScript y Prisma.
 
-First, run the development server:
+## Características Principales
+
+- Interfaz de usuario moderna con Next.js 14
+- Base de datos con Prisma ORM
+- Estilos con Tailwind CSS
+- Validación de tipos con TypeScript
+- Configuración de entorno con Docker
+- Optimización de rendimiento con Next.js
+
+## Estructura del Proyecto
+
+```
+quiosco-next/
+├── app/              # Páginas y rutas de la aplicación
+├── components/       # Componentes reutilizables
+├── prisma/          # Esquema y migraciones de la base de datos
+├── public/          # Archivos estáticos
+└── src/             # Código fuente compartido
+```
+
+## Requisitos Previos
+
+- Node.js 18+
+- npm o yarn
+- Docker y Docker Compose (opcional)
+
+## Instalación
+
+1. Clonar el repositorio
+2. Copiar `.env.template` a `.env` y configurar las variables de entorno
+3. Instalar dependencias:
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+## Desarrollo
+
+### Modo Desarrollo
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Construcción para Producción
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+# o
+yarn build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Ejecutar en Producción
 
-## Learn More
+```bash
+npm run start
+# o
+yarn start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Variables de Entorno
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Crear un archivo `.env` con las siguientes variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+DATABASE_URL=your_database_url
+NEXT_PUBLIC_API_URL=your_api_url
+```
 
-## Deploy on Vercel
+## Base de Datos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+El proyecto utiliza Prisma como ORM. Para inicializar la base de datos:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx prisma generate
+npx prisma migrate dev
+```
+
+### Para visualizar tu base de datos con prisma
+
+```bash
+npx prisma studio
+# Solo para entornso de desarrollo
+```
+
+## Docker
+
+Para ejecutar el proyecto con Docker:
+
+```bash
+docker-compose up --build
+```
+
+## Tecnologías Utilizadas
+
+- **Frontend**: Next.js 14, React, TypeScript
+- **Estilos**: Tailwind CSS
+- **Base de Datos**: Prisma ORM
+- **Contenedorización**: Docker
+- **Validación de Código**: ESLint
