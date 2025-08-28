@@ -10,14 +10,19 @@ import { OrderSchema } from "@/src/schema";
 
 export default function OrderSummary() {
   const order = useStore((state) => state.order);
+  const clearOrder = useStore((state) => state.clearOrder);
 
   const total = useMemo(() => order.reduce((total, item) => total + (item.price * item.quantity), 0), [order]);
 
-  const handleCreateOrder = (formData: FormData) => {
+  const handleCreateOrder = async (formData: FormData) => {
     // Lógica para crear el pedido
     const data ={
-      name: formData.get('name')
+      name: formData.get('name'),
+      total,
+      order
     }
+
+    // Validar los datos en el cliente
     const result = OrderSchema.safeParse(data);
 
     if (!result.success) {
@@ -26,7 +31,18 @@ export default function OrderSummary() {
       });
       return;
     }
-    createOrder();
+
+    // Validar los datos en el servidor
+    const response = await createOrder(data);
+    
+    if (response?.errors) {
+      response.errors.forEach(error => {
+        toast.error(error.message);
+      });
+    }
+
+    toast.success("Pedido realizado correctamente!")
+    clearOrder()
   }
   return (
     <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
