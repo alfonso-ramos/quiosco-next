@@ -11,3 +11,8 @@ export const OrderSchema = z.object({
         subtotal: z.number()
     }))
 });
+
+export const OrderIdSchema = z.object({
+    orderId: z.string().transform((val) => parseInt(val)).refine(val => val > 0, {message: "hay errores"})
+
+})
