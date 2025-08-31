@@ -83,6 +83,14 @@ npx prisma generate
 npx prisma migrate dev
 ```
 
+### Poblar la base de datos con datos de ejemplo (seed)
+
+Para insertar los datos de ejemplo definidos en `prisma/seed.ts`, ejecuta:
+
+```bash
+npx prisma db seed
+```
+
 ### Para visualizar tu base de datos con prisma
 
 ```bash
@@ -95,7 +103,7 @@ npx prisma studio
 Para ejecutar el proyecto con Docker:
 
 ```bash
-docker-compose up --build
+docker compose up --build -d
 ```
 
 ## Tecnologías Utilizadas
