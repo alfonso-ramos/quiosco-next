@@ -16,11 +16,7 @@ async function getProductById(id: number) {
   }
   return product;
 }
-export default async function editProductPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function editProductPage({ params }: { params: { id: string }}) {
   const product = await getProductById(+params.id);
   return (
     <>

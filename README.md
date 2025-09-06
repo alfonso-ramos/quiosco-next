@@ -2,6 +2,10 @@
 
 Sistema de gestión de quiosco desarrollado con Next.js, TypeScript y Prisma.
 
+## Descripción General
+
+Aplicación web moderna para la gestión de pedidos y productos en un quiosco o cafetería. Permite a los usuarios visualizar productos por categorías, gestionar órdenes y administrar el catálogo desde una interfaz intuitiva.
+
 ## Características Principales
 
 - Interfaz de usuario moderna con Next.js 14
@@ -21,6 +25,15 @@ quiosco-next/
 ├── public/          # Archivos estáticos
 └── src/             # Código fuente compartido
 ```
+
+## Flujo de Trabajo
+
+1. Clona el repositorio y configura las variables de entorno.
+2. Instala las dependencias.
+3. Realiza las migraciones y genera el cliente de Prisma.
+4. (Opcional) Pobla la base de datos con datos de ejemplo (seed).
+5. Ejecuta el proyecto en modo desarrollo o producción.
+6. (Opcional) Visualiza y administra la base de datos con Prisma Studio.
 
 ## Requisitos Previos
 
@@ -113,3 +126,16 @@ docker compose up --build -d
 - **Base de Datos**: Prisma ORM
 - **Contenedorización**: Docker
 - **Validación de Código**: ESLint
+
+## Roles y Funcionalidades
+
+- **Usuario**: Puede navegar por categorías, ver productos y realizar pedidos.
+- **Administrador**: Accede a paneles exclusivos para gestionar productos, categorías y órdenes.
+
+## Buenas Prácticas
+
+- Uso de TypeScript para evitar errores comunes y mejorar la mantenibilidad.
+- Separación clara de componentes y lógica de negocio.
+- Migraciones controladas y reproducibles con Prisma.
+- Estilos centralizados y personalizables con Tailwind CSS.
+- Soporte para despliegue en contenedores Docker.
